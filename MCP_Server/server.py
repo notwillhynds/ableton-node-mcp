@@ -3,9 +3,9 @@ from mcp.server.fastmcp import FastMCP, Context
 import socket
 import json
 import logging
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from contextlib import asynccontextmanager
-from typing import AsyncIterator, Dict, Any, List, Union
+from typing import AsyncIterator, Dict, Any, List, Union, Optional
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, 
@@ -16,7 +16,7 @@ logger = logging.getLogger("AbletonMCPServer")
 class AbletonConnection:
     host: str
     port: int
-    sock: socket.socket = None
+    sock: Optional[socket.socket] = None
     
     def connect(self) -> bool:
         """Connect to the Ableton Remote Script socket server"""
